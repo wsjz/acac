@@ -10,9 +10,9 @@ include_directories(${CMAKE_CURRENT_BINARY_DIR})
 #        )
 # add_executable(test ${SRC_LIST})
 
-add_executable(test ./test.cpp)
-add_executable(test1 ./bitree/tree.cpp)
-add_library(lc test.cpp)
+add_executable(test 1_two_sum.cpp)
+add_executable(test1 bitree/124_max_path_sum.cpp)
+add_library(lc 1_two_sum.cpp)
 
 install (TARGETS lc DESTINATION bin)
-install (FILES test.cpp DESTINATION include)
+install (FILES 1_two_sum.cpp DESTINATION include)

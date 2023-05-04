@@ -1,18 +1,14 @@
-include_directories(${CMAKE_CURRENT_BINARY_DIR})
+cmake_minimum_required(VERSION 3.5)
+project(lc)
+set(CMAKE_CXX_STANDARD 17)
 
-#aux_source_directory(. SRC_LIST)
-#aux_source_directory(bitree SRC_LIST2)
-#add_executable(test ${SRC_LIST} ${SRC_LIST2})
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/third_party/googletest/googletest/include)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/bitree)
 
-#set(SRC_LIST
-#        ./test.cpp
-#        ./bitree/tree.cpp
-#        )
-# add_executable(test ${SRC_LIST})
+add_subdirectory(third_party/googletest/googletest)
 
-add_executable(test 1_two_sum.cpp)
-add_executable(test1 bitree/124_max_path_sum.cpp)
-add_library(lc 1_two_sum.cpp)
-
-install (TARGETS lc DESTINATION bin)
-install (FILES 1_two_sum.cpp DESTINATION include)
+link_directories(${CMAKE_CURRENT_SOURCE_DIR}/third_party/googletest/googletest)
+# add to gtest cmake: set(GOOGLETEST_VERSION 1.13.0)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/out")
+add_executable(Test "bitree/utils_test.cpp")
+# target_link_directories(Test gtest)

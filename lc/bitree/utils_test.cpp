@@ -11,8 +11,3 @@ TEST(Case, test2) {
     auto* tree = buildTree(levels);
     printTree(tree);
 }
-
-GTEST_API_ int main() {
-    testing::InitGoogleTest();
-    return RUN_ALL_TESTS();
-}

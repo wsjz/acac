@@ -31,14 +31,22 @@ static TreeNode *buildTree(list<int> levels) {
         if (!levels.empty()) {
             int lv = levels.front();
             levels.pop_front();
-            node->left = new TreeNode(lv);
-            nodes.push_back(node->left);
+            if (lv == INT32_MIN) {
+                node->left = nullptr;
+            } else {
+                node->left = new TreeNode(lv);
+                nodes.push_back(node->left);
+            }
         }
         if (!levels.empty()) {
             int rv = levels.front();
             levels.pop_front();
-            node->right = new TreeNode(rv);
-            nodes.push_back(node->right);
+            if (rv == INT32_MIN) {
+                node->right = nullptr;
+            } else {
+                node->right = new TreeNode(rv);
+                nodes.push_back(node->right);
+            }
         }
     }
     return root;
@@ -47,27 +55,30 @@ static TreeNode *buildTree(list<int> levels) {
 static void printTree(TreeNode *tree) {
     list<TreeNode *> nodes;
     nodes.push_back(tree);
-    int level = 0;
+    int level = 1;
     int num_cur_nodes = 0;
     int num_level_node = 1;
+    int processed_nodes = 0;
     while (!nodes.empty()) {
         auto *node = nodes.front();
         nodes.pop_front();
-        if (node == nullptr) {
-            continue;
-        }
-        if (node->val == INT32_MIN) {
+        if (node == nullptr && processed_nodes < static_cast<int>(pow(2, level)) - 1) {
             cout << " " << "null" << " ";
+            processed_nodes++;
             continue;
+        } else if (node == nullptr) {
+            continue;  
         }
         cout << " " << node->val << " ";
+        processed_nodes++;
         num_cur_nodes++;
         if (num_cur_nodes == num_level_node) {
             cout << "\n";
             num_cur_nodes = 0;
-            num_level_node = static_cast<int>(pow(2, ++level));
+            num_level_node = static_cast<int>(pow(2, level++));
         }
         nodes.push_back(node->left);
         nodes.push_back(node->right);
     }
+    cout << endl;
 }

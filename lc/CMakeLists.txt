@@ -16,7 +16,7 @@ set(TEST_LIST
         base/1_two_sum_test.cpp
         base/371_sum_two_int_test.cpp
         bitree/105_build_tree_from_pre_in_order_test.cpp 
-        bitree/124_max_path_sum_test.cpp)
+        bitree/124_max_path_sum_test.cpp base/50_quick_power.h base/50_quick_power_test.cpp base/i_08_02_quick_multi.h base/i_08_02_quick_multi_test.cpp)
 
 add_executable(Test ${TEST_LIST})
 target_link_libraries(Test gtest gtest_main)

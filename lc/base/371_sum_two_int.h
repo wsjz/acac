@@ -1,3 +1,4 @@
+#include <cmath>
 
 /**
  * 5(101) + 7(111) = 12(1100)
@@ -39,5 +40,13 @@ public:
             return a;
         }
         return getSumR(a ^ b, (unsigned int) (a & b) << 1);
+    }
+
+    // 娱乐写法
+    int getSumHah(int a, int b) {
+        if (a == 0 || b == 0) {
+            return a ^ b;
+        }
+        return (int) log(exp(a) * exp(b));
     }
 };

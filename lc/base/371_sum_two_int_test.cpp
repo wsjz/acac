@@ -15,3 +15,8 @@ TEST(SumTwoInt, case3) {
     Solution solution;
     EXPECT_EQ(solution.getSum(123, 456), 579);
 }
+
+TEST(SumTwoInt, case4) {
+    Solution solution;
+    EXPECT_EQ(solution.getSumHah(123, 456), 579);
+}

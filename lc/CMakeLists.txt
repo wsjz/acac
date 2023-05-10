@@ -22,7 +22,7 @@ set(TEST_LIST
         base/69_sqrt.h
         base/69_sqrt_test.cpp
         bitree/105_build_tree_from_pre_in_order_test.cpp 
-        bitree/124_max_path_sum_test.cpp)
+        bitree/124_max_path_sum_test.cpp base/s_64_sum_nums.h base/s_64_sum_nums_test.cpp)
 
 add_executable(Test ${TEST_LIST})
 target_link_libraries(Test gtest gtest_main)

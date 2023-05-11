@@ -27,7 +27,7 @@ set(TEST_LIST
         base/231_pow_of_two_test.cpp
         base/326_pow_of_three_test.cpp
         base/342_pow_of_four_test.cpp
-        )
+        base/1492_kth_factor_test.cpp base/367_perfect_square_test.cpp)
 
 add_executable(Test ${TEST_LIST})
 target_link_libraries(Test gtest gtest_main)

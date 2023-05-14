@@ -1,7 +1,8 @@
 #include <iostream>
 #include <list>
 #include <algorithm>
-#include <math.h>
+#include <cmath>
+#include <functional>
 
 using namespace std;
 
@@ -81,4 +82,65 @@ static void printTree(TreeNode *tree) {
         nodes.push_back(node->right);
     }
     cout << endl;
+}
+
+static vector<vector<long>> matrix_mul(const vector<vector<long>>& a, const vector<vector<long>>& b) {
+    assert(!b.empty() && !a.empty());
+    size_t rows = a.size();
+    size_t columns = b[0].size();
+    size_t middle = a[0].size();
+    vector<vector<long>> c(rows, vector<long>(columns));
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < columns; j++) {
+            for (int k = 0; k < middle; k++) {
+                c[i][j] += a[i][k] * b[k][j];
+            }
+        }
+    }
+    return c;
+}
+
+static void matrix_print(const vector<vector<long>>& a) {
+    size_t rows = a.size();
+    size_t columns = a[0].size();
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < columns; j++) {
+            cout << a[i][j];
+            if (j != columns - 1) {
+                cout << "\t";
+            } else {
+                cout << "\n";
+            }
+        }
+    }
+}
+
+inline __uint128_t read(){
+    __uint128_t x = 0;
+    int ch = getchar();
+    while (ch > '0' && ch <= '9') {
+        x = x * 10 + (ch - '0');
+        ch = getchar();
+    }
+    return x;
+}
+
+inline void write(__uint128_t x){
+    if (x > 9) {
+        write(x / 10);
+    }
+    putchar(int(x % __uint128_t(10) + '0'));
+}
+
+template<typename T>
+static T quick_pow(T& elem, long pow, T& init_val, function<T(T&, T&)> cal) {
+    T ret = init_val;
+    while(pow > 0) {
+        if ((pow & 1) == 1) {
+            ret = cal(ret, elem);
+        }
+        elem = cal(elem, elem);
+        pow >>= 1;
+    }
+    return ret;
 }

@@ -129,7 +129,7 @@ inline void write(__uint128_t x){
     if (x > 9) {
         write(x / 10);
     }
-    putchar(int(x % __uint128_t(10) + '0'));
+    putchar(char(x % 10 + '0'));
 }
 
 template<typename T>
